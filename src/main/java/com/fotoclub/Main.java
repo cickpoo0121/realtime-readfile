@@ -27,11 +27,15 @@ public class Main {
             bufferedReader = new BufferedReader(new FileReader(path));
             while (true) {
                 if ((currentLine = bufferedReader.readLine()) != null) {
+
+                    // process a line below here
+
                     System.out.println(currentLine);
+
                     continue;
                 }
 
-                // delay 1s for pending read new line
+                // delay 1s for pending read a new line
                 try {
                     Thread.sleep(1000);
                 } catch (InterruptedException e) {
