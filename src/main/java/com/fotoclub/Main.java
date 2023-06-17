@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.util.HashMap;
 import java.util.Map;
 
 
@@ -15,22 +16,19 @@ public class Main {
         String currentLine = null;
         ObjectMapper objectMapper = new ObjectMapper();
         // file path can be absolute path
-        String path = "../main/resources/test.txt";
+        String path = "F:/Freelance/fotoclubProject/POC/realtime-read-file/src/main/resources/test.json";
 
         try {
-            // sample load json string to map
-            String str = "{\r\n  \"userId\": 1,\r\n  \"id\": 1,\r\n  \"title\": \"delectus aut autem\",\r\n  \"completed\": false\r\n}";
-            Map myMap = objectMapper.readValue(str, Map.class);
-            System.out.println(myMap);
-
             // open read file
             bufferedReader = new BufferedReader(new FileReader(path));
             while (true) {
                 if ((currentLine = bufferedReader.readLine()) != null) {
 
                     // process a line below here
-
                     System.out.println(currentLine);
+
+                    Map mapJson = objectMapper.readValue(currentLine, HashMap.class);
+                    System.out.println(mapJson);
 
                     continue;
                 }
